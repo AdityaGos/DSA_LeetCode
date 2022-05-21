@@ -1,11 +1,16 @@
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
-        sort(nums.begin(),nums.end());
         int ans=0;
+        set<int> st;
         for(int i=0;i<nums.size();i++)
         {
-            ans^=nums[i];
+            if(st.count(nums[i])){ st.erase(nums[i]);}
+            else st.insert(nums[i]);
+        }
+        for(auto x:st)
+        {
+            ans=x;
         }
         return ans;
     }
