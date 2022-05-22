@@ -14,12 +14,7 @@ public:
                 if(threesum>0){ high--;}
                 else if(threesum<0){ low++;}
                 else
-                {
-                    vector<int> v;
-                    v.push_back(nums[i]);
-                    v.push_back(nums[low]);
-                    v.push_back(nums[high]);
-                    ans.push_back(v);
+                {  ans.push_back({nums[i],nums[low],nums[high]});
                     low++;
                     while(nums[low]==nums[low-1] && low<high){ low++;}
                 
