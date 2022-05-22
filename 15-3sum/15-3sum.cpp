@@ -16,10 +16,8 @@ public:
                 else if(threesum<0){ low++;}
                 else
                 {  ans.push_back({nums[i],nums[low],nums[high]});
-                    while(low < high && nums[low] == nums[low+1]) low++;
-                    while(low < high && nums[high] == nums[high-1]) high--;
-                 low++;
-                 high--;
+                    low++;
+                    while(nums[low]==nums[low-1] && low<high){ low++;}
                 
                 }
                
