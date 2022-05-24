@@ -12,20 +12,13 @@ public:
             window.push_back(i);
         }
         ans.push_back(nums[window.front()]);
-       
         for(int i=k;i<nums.size();i++)
         {
-            if(window.size() && i-window.front()>=k) { window.pop_front(); }
-            
-             while(window.size() && nums[i]>=nums[window.back()])
-            {
-                window.pop_back();
-            }
+            if(window.size() && i-window.front()>=k){ window.pop_front();}
+            while(window.size() && nums[i]>=nums[window.back()]){ window.pop_back();}
             window.push_back(i);
             ans.push_back(nums[window.front()]);
-            
         }
         return ans;
-        
     }
 };
