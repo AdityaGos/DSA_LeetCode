@@ -30,9 +30,9 @@ public:
                 if(node->right){ q.push(node->right);}
                 v.push_back(node->val);
             }
-            ans.push_back(v);
+            ans.insert(ans.begin(),v);
         }
-        reverse(ans.begin(),ans.end());
+        // reverse(ans.begin(),ans.end());
         return ans;
     }
 };
