@@ -1,6 +1,9 @@
 class Solution {
 public:
     int findPairs(vector<int>& nums, int k) {
+        //Hash map solution
+        //Time Complexity =O(N)
+        // Space Complexity =O(N)
         unordered_map<int,int>mp;
         int count=0;
         for(int i:nums)
