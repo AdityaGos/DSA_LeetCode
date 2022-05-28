@@ -1,23 +1,25 @@
 class Solution {
 public:
     int findPairs(vector<int>& nums, int k) {
-        //Hash map solution
-        //Time Complexity =O(N)
-        // Space Complexity =O(N)
-        unordered_map<int,int>mp;
-        int count=0;
-        for(int i:nums)
+        // 2 pointer method 
+        // Time Complexity -O(nlogn)
+        // Space Complexity -O(1)
+        sort(nums.begin(),nums.end());
+        int i=0,j=1,count=0;
+        for(i,j;i<nums.size() && j<nums.size();)
         {
-            mp[i]++;
-        }
-        for(auto x:mp)
-        {
-            if(k==0){
-                if(x.second>1){ count++;}
-            }
-            else if(mp.count(x.first+k))
-            {
-                count++;
+            if(i==j || nums[j]-nums[i] <k){ j++;}
+            else{
+                if(nums[j]-nums[i]==k)
+                {
+                    count++;
+                    j++;
+                    while(j<nums.size()&& nums[j-1]==nums[j]){ j++;}
+                    
+                }
+                i++;
+                while(i<j && nums[i]==nums[i-1]){ i++;}
+                
             }
         }
         return count;
