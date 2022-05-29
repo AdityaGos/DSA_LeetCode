@@ -6,17 +6,20 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+
+//Using Hashmap
+// Space Complexity O(N)
+// Time Complexity O(N)
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-         if(head == NULL)
-         { return false; }
-        ListNode *fast=head,*slow=head;
-        while(fast && fast->next)
+        map<ListNode*,int> mp;
+        ListNode *temp=head;
+        while(temp)
         {
-            fast=fast->next->next;
-            slow=slow->next;
-            if(slow==fast){ return true;}
+            if(mp.find(temp)!=mp.end()){return true;}
+            mp[temp]++;
+            temp=temp->next;
         }
         return false;
     }
