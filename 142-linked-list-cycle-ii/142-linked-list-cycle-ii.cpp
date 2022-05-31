@@ -9,19 +9,27 @@
 class Solution {
 public:
     ListNode *detectCycle(ListNode *head) {
-         map <ListNode*,int> mp;
-        ListNode *temp=head,*prev=NULL;
-        while(temp)
+        if(!head){ return NULL; }
+         ListNode *fast=head,*slow=head;
+        bool flag=false;
+        while(fast && fast->next)
         {
-           if(mp.count(temp))
-           {
-               // cout<<"found";
-               return temp;
-           }
-           mp[temp]++;
-           prev=temp;
-           temp=temp->next;
+            slow=slow->next;
+            fast=fast->next->next;
+            if(fast==slow)
+            {
+                flag=true;
+                break;
+            }
         }
-        return temp;
+        if(!flag){ return NULL;}
+        ListNode * slow2=head;
+        while(slow!=slow2)
+        {
+            slow2=slow2->next;
+            slow=slow->next;
+            
+        }
+        return slow2;
     }
 };
